@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dexmaster</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <h1>Who's That Pokémon?</h1>
+    <p>Score: <%= score %></p>
+    <h2><%= entry %></h2>
+    <form action="/submit" method="post">
+        <input type="text" name="answer">
+        <input type="submit" <%= (reveal || check === "Correct!") && "disabled" %>>
+        <input type="submit" name="reveal" value="Reveal answer" <%= (reveal || check === "Correct!") && "disabled" %>>
+        <% if (reveal || check === "Correct!") { %>
+            <input type="submit" name="next" value="Next">
+        <% } %>
+    </form>
+    <% if (reveal) { %>
+        <p>Answer: <%= answer %></p>
+    <% } %>
+    <p><%= check %></p>
+</body>
+</html>
